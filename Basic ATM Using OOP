@@ -1,0 +1,88 @@
+class Atm:
+    #static/class variable
+    counter=1
+    # constructor
+    def __init__(self):
+       self.pin="" # pin and balance are encapsulated i.e hided and cant be accessed outside the class
+       self.balance=0 # to encapsulate simply put __ in front of the name, encapsulation can also be done to confidential
+       self.serialnum=Atm.counter
+       Atm.counter=Atm.counter+1
+       print(self.serialnum)
+       #self.menu()
+    def menu(self):
+        print(''' hello !!! welcome...How would you like to proceed??
+                         1.Enter 1 to create pin
+                         2.Enter 2 to deposit money
+                         3.Enter 3 to withdraw
+                         4.Enter 4 to check balance
+                         5.1.Enter 5 to exit
+                         ''')
+        choice=input("Enter your choice : ")
+        match choice:
+            case "1":self.create_pin()
+            case "2":self.deposit()
+            case "3":self.withdraw()
+            case "4":self.check_balance()
+            case "5":self.quit()
+            case _: print("Invalid Input")
+    def create_pin(self):
+        print("Now You Need to set Up your pin.If you already have created your Pin , please choose a different option.")
+        x=input('''
+                   1.Enter 1 to Proceed (creating pin) 
+                   2. Enter 2 to exit
+                ''')
+        if x=="1":
+         self.pin=int(input("ENTER PIN = "))
+         print("Pin Created Successfully.")
+         print("Returning to Main Menu.")
+         self.menu()
+        else:
+           print("Returning to Main Menu. THANK YOU !!!")
+           self.menu()
+    def deposit(self):
+       temp=int(input("Enter your pin= "))
+       if temp==self.pin:
+          print("Pin entered successfully, Ready to deposit.")
+          amount=int(input("enter your deposit amount="))
+          self.balance+=amount
+          print("amount successfully deposited.")
+          print("Returning to Main Menu.")
+          self.menu()
+       else:
+          print("Pin Not matched.Try again!!!")
+          self.menu()
+    def withdraw(self):
+        temp=int(input("Enter your pin= "))
+        if temp==self.pin:
+          print("Pin entered successfully, Ready to withdraw.")
+          amount=int(input("enter amount to withdraw = "))
+          if amount>self.balance:
+             print("Insufficient balance. Withdraw Unsucessful.")
+             print("Returning to Main Menu.")
+             self.menu()
+          self.balance-=amount
+          print("Amount withdrawn successfully")
+          print("Returning to Main Menu.")
+          self.menu()
+        else:
+          print("Pin Not matched.Try again!!!")
+          self.menu()
+    def check_balance(self):
+       temp=int(input("Enter your pin= "))
+       if temp==self.pin:
+          print("Your current balance is=",self.balance)
+          print("Returning to Main Menu.")
+          self.menu()
+       else:
+          print("Pin Not matched.Try again!!! FOR SECURITY REASONS RETURNING BACK TO MAIN MENU")
+          self.menu()
+
+    def quit(self):
+       print("Thank You. visit again....... BYE.........")
+       exit()
+       
+
+sbi=Atm() #sbi ->reference variable that has the reference of our object
+print(sbi)
+hdfc=Atm()
+print(hdfc)
