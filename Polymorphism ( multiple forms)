@@ -1,0 +1,43 @@
+# METHOD OVERRIDING 
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def speak(self):
+        print("Dog barks")
+
+a = Animal()
+d = Dog()
+
+a.speak()  # Output: Animal speaks
+d.speak()  # Output: Dog barks
+
+
+
+# METHOD OVERLOADING ( USING DEFAULT PARAMETER), true method overloading dont exist in python
+class Calculator:
+    def add(self, a, b=0, c=0):
+        return a + b + c
+
+c = Calculator()
+print(c.add(2))        # 2
+print(c.add(2, 3))     # 5
+print(c.add(2, 3, 4))  # 9
+
+
+
+# OPERATOR OVERLOADING , mostly done using Magic methods 
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, other): # magic methods
+        return Point(self.x + other.x, self.y + other.y)
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+p3 = p1 + p2   # Internally calls p1.__add__(p2)
+
+print(p3.x, p3.y)  # Output: 4 6
