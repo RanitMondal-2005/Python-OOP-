@@ -1,0 +1,67 @@
+# eg 1
+# creating 2 class customer and address...
+class Customer:
+    def __init__(self,name,age,gender,address):
+        self.name=name
+        self.age=age
+        self.gender=gender
+        self.address=address
+    def edit_profile(self):
+        pass
+class Address:
+    def __init__(self,city,pincode,state):
+        self.city=city
+        self.pincode=pincode
+        self.state=state
+    def change_address(self,new_city,new_pincode,new_state):
+        self.new_city=new_city
+        self.new_pincode=new_pincode
+        self.new_state=new_state
+add=Address("kolkata",700157,"West bengal")
+cus=Customer("ranit",20,"male",add)
+print(cus.name,cus.gender,cus.age,cus.address.state)
+
+# eg  2
+
+class Car:
+    def __init__(self, engine):
+        self.engine = engine  # Aggregation
+
+    def start(self):
+        print("Car started")
+        self.engine.start()
+        
+class Engine:
+    def start(self):
+        print("Engine started")
+
+e = Engine()
+c = Car(e)
+c.start()
+
+# eg 3
+
+class Engine:
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
+
+class Car:
+    def __init__(self, make, model, engine):
+        self.make = make
+        self.model = model
+        self.engine = engine  # Aggregation: Car 'has-a' Engine
+
+    def display_info(self):
+        print(f"Car: {self.make} {self.model}, Engine Horsepower: {self.engine.horsepower}")
+
+# Create an Engine object independently
+engine_obj = Engine(150)
+
+# Create a Car object, aggregating the Engine object
+car_obj = Car("Toyota", "Camry", engine_obj)
+car_obj.display_info() # Output: Car: Toyota Camry, Engine Horsepower: 150
+
+# Even if car_obj is deleted, engine_obj can still exist
+del car_obj
+# We can still access the engine_obj, demonstrating independent lifecycles
+print(engine_obj.horsepower) # Output: 150
