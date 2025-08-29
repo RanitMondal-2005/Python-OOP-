@@ -1,0 +1,94 @@
+# types of inheritance- single level inheritance, multi level inheritance , multiple inheritance , hierarchical inheritance and hybrid inheritance ( more than 1 type of inheritance mixed together)
+
+# TYPE 1-> SINGLE LEVEL INHERITANCE ( basic type of inheritance where a child inherits from a parent)
+
+
+# class Phone:
+#  def __init__(self, price, brand, camera):
+#      print ("Inside phone constructor")
+#      self._price = price
+#      self.brand = brand
+#      self.camera = camera
+#  def buy(self):
+#      print ("Buying a phone")
+#  def return_phone(self):
+#      print ("Returning a phone")
+# class SmartPhone(Phone):
+#  pass
+# SmartPhone(1000,"Apple","13px").buy() 
+
+
+
+# TYPE 2-> MULTI- LEVEL INHERITANCE 
+
+
+# (real life eg- Grandfather -> Father-> Son)
+# (where ,son inherits from both grandfather and father , similarly father inherits only from grandfather and so on)
+
+# eg of multi level inheritance here = PRODUCT -> PHONE -> SMARTPHONE
+
+# class Product:
+#  def review(self):
+#      print ("Product customer review")
+# class Phone(Product):
+#   def __init__(self, price, brand, camera):
+#      print ("Inside phone constructor")
+#      self._price = price
+#      self.brand = brand
+#      self.camera = camera
+# class SmartPhone(Phone):
+#  pass
+# s=SmartPhone(200000, "Apple", 12)
+# p=Phone(15000, "xiomi", 32)
+# p.review()
+# s.review()
+
+
+
+# TYPE 3-> HIRARCHICAL INHERITANCE ( more childs inherits from single parent i.e a prent has many childs)
+
+# eg used= PHONE -> Smart Phone and also PHONE -> Feature Phone
+
+# class Phone:
+#  def __init__(self, price, brand, camera):
+#      print ("Inside phone constructor")
+#      self._price = price
+#      self.brand = brand
+#      self.camera = camera
+#  def buy(self):
+#      print ("Buying a phone")
+#  def return_phone(self):
+#      print ("Returning a phone")
+# class SmartPhone(Phone):
+#  pass
+# class FeaturePhone(Phone):
+#  pass
+# SmartPhone(100000,"Apple","13px").buy()
+# FeaturePhone(15000,"Samsung","42px").return_phone()
+
+
+# TYPE 4-> MULTIPLE INHERITANCE  ( 1 child inherits multiple parent)
+
+# eg used = 2 parents, 1 child i.e PHONE & PRODUCT -> SMARTPHONE
+class Phone:
+ def __init__(self, price, brand, camera):
+     print ("Inside phone constructor")
+     self._price = price
+     self.brand = brand
+     self.camera = camera
+ def buy(self):
+     print ("Buying a phone")
+ def return_phone(self):
+     print ("Returning a phone")
+class Product:
+ def review(self):
+     print ("Customer review")
+class SmartPhone (Phone, Product): # remember the syntax
+ pass
+s=SmartPhone (20000, "Apple", 12)
+s.buy()
+s.review()
+
+
+
+# TYPE 5-> HYBRID INHERITANCE ( where more than 2 or more type of inheritance types are involved )
