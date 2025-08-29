@@ -1,0 +1,51 @@
+#new datatype as fraction using magic methods
+
+# since there is no way to handle fractional conditions in python , python by default converts it to decimal .so we will try to build a basic class fraction that will handle all fractional cases properly.
+# simply we will use concept of basic class & object along with Magic methods ( whose list u can get online )
+# initially let's consider  have only max to max 2 fractions
+class Fraction:
+    def __init__(self,n,d):
+        self.numerator=n
+        self.denominator=d
+        
+    def __str__(self): # how fraction will look
+        return "{}/{}".format(self.numerator,self.denominator)
+    
+
+    #__add__ or __sub__ etc are called MAGIC/SPECIAL METHODS
+
+    
+    def __add__(self,other): # fractional addition
+        t_num=self.numerator*other.denominator+self.denominator* other.numerator
+        t_den=self.denominator*other.denominator
+        return "{}/{}".format(t_num,t_den)
+    def __sub__(self,other):# fractional subtraction
+        t_num=self.numerator*other.denominator-self.denominator* other.numerator
+        t_den=self.denominator*other.denominator
+        return "{}/{}".format(t_num,t_den)
+    def __mul__(self,other):#fractional multiplication
+        t_num=self.numerator*other.numerator
+        t_den=self.denominator*other.denominator
+        return "{}/{}".format(t_num,t_den)
+    def __truediv__(self,other):
+        pass
+
+f1=Fraction(1,2)  
+f2=Fraction(1,3)  
+while True:
+    choice=int(input(''' Enter your option to perform multiple operations in Fraction
+                         Choose a option from below:
+                          Enter 1 to simply print your fraction
+                          Enter 2 to simply add your fractions
+                          Enter 3 to simply subtract your fraction
+                          Enter 4 to simply multiply your fraction
+                          Enter 5 to simply divide your fraction
+                         Enter 6 to exit
+                         '''))
+    match choice:
+        case 1:print("1st=",f1,"2nd=",f2)
+        case 2:print(f1+f2)
+        case 3:print(f1-f2)
+        case 4:print(f1*f2)
+        case 5:pass
+        case 6:exit()
