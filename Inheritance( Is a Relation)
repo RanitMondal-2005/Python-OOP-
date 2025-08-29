@@ -1,0 +1,43 @@
+# Inheritance-> Is a class relationship
+
+#eg 1
+class Phone:
+    def __init__(self,body,back):
+        self.body=body
+        self.back=back
+        print(self.body)
+        print(self.back)
+    def metal_body(self):
+        print("metal body")
+    def plastic_body(self):
+        print("plastic body")
+
+class SmartPhone(Phone):
+    def display(self):
+        print("display is FHD")
+
+class FeaturePhone(Phone):
+    def display(self):
+        print("normal display ")
+smartphone1=SmartPhone("solid","plastic")
+print(smartphone1)
+featurephone1=FeaturePhone("bad","cheap plastic")
+print(featurephone1)
+
+# eg  of super()
+# Super ().method/constructor_name(arguments) ,, is used to properly inherit the respective method or constructor of the parent ensuring proper following of the Concept of MRO(METHOD RESOLUTION ORDER).
+
+class Parent:
+ def __init__(self,num):
+     self.__num=num
+ def get_num(self):
+     return self.__num
+class Child(Parent):
+ def __init__(self,num,val):
+     self.__val=val
+     super().__init__(num)
+ def get_val(self):
+     return self.__val
+son=Child(100,200)
+print(son.get_val())
+print(son.get_num())
