@@ -1,0 +1,28 @@
+from abc import ABC, abstractmethod
+
+# Abstract base class
+class PaymentGateway(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+# Child class 1
+class PhonePe(PaymentGateway):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using PhonePe")
+
+# Child class 2
+class GPay(PaymentGateway):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using Google Pay (GPay)")
+
+# Function that uses abstraction
+def make_payment(gateway: PaymentGateway, amount: int):
+    gateway.pay(amount)
+
+# Example usage
+payment1 = PhonePe()
+payment2 = GPay()
+
+make_payment(payment1, 500)  # Output: Paid ₹500 using PhonePe
+make_payment(payment2, 750)  # Output: Paid ₹750 using Google Pay (GPay)
